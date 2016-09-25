@@ -14,7 +14,6 @@ class Solution(object):
 
         for i, value in enumerate(nums):
             maxs[i] = max(value + maxs.get(i-2, 0), maxs.get(i-1, 0))
-            print i, maxs
 
         return maxs[len(nums)-1]
 
