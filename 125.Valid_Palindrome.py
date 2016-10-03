@@ -8,5 +8,5 @@ class Solution(object):
         :rtype: bool
         """
         s = ''.join(char for char in s.lower() if char.isalnum())
-        return all(i==j for i, j in zip(s, s[::-1]))
+        return s == s[::-1]
 
