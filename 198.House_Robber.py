@@ -10,7 +10,7 @@ class Solution(object):
         if nums == []:
             return 0
 
-        maxs = {}
+        maxs = []*nums
 
         for i, value in enumerate(nums):
             maxs[i] = max(value + maxs.get(i-2, 0), maxs.get(i-1, 0))

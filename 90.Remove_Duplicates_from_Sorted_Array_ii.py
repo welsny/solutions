@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 class Solution(object):
-    def removeDuplicates(self, nums, position=0, last=None):
+    def removeDuplicates(self, nums):
         """
         :type nums: List[int]
         :rtype: int

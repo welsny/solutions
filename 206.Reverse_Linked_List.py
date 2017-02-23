@@ -17,9 +17,7 @@ class Solution(object):
         if head is None:
             return prev
 
-        rest = head.next
-
-        head.next = prev
+        rest, head.next = head.next, prev
 
         return self.reverseList(rest, prev=head)
 
