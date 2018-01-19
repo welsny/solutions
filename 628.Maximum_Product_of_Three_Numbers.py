@@ -27,3 +27,17 @@ class Solution:
 
         return max(sols)
 
+import heapq
+
+class Solution:
+    def maximumProduct(self, nums):
+        """
+        Improved solution. In my original solution, I overcomplicated things by separating things into positive and negative. I think in an interview, it would make sense to present this solution first and then run test cases for edge cases instead of explaining it from a mathematical proof perspective.
+
+        :type nums: List[int]
+        :rtype: int
+        """
+        h, l = heapq.nlargest(3, nums), heapq.nsmallest(2, nums)
+        return max(h[0] * h[1] * h[0], h[0] * l[0] * l[1])
+
+
