@@ -17,8 +17,7 @@ class Solution:
         result = 0
         targets = defaultdict(int)
         for n in sums:
-            if n in targets:
-                result += targets[n]
+            result += targets[n]
             targets[k+n] += 1
         return result
 
