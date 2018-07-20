@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 
 ass Solution(object):
+    """
+    Old solution from ~2016.
+    """
     def isAnagram(self, s, t):
         """
         :type s: str
@@ -23,4 +26,18 @@ ass Solution(object):
                 counts[char] -= 1
 
         return all(value == 0 for key, value in counts.items())
+
+from collections import Counter
+
+class Solution:
+    """
+    One-liner using Counter.
+    """
+    def isAnagram(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        return Counter(s) == Counter(t)
 
