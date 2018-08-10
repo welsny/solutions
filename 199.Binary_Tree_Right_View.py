@@ -22,7 +22,7 @@ class Solution(object):
         def dfs(node, depth=0, distance=0):
             if not node:
                 return
-            if depth not in result or result[depth][1] > distance:
+            if depth not in min_node or min_node[depth][1] > distance:
                 min_node[depth] = (node, distance)
 
             dfs(node.right, depth+1, 2*distance)
@@ -38,3 +38,32 @@ class Solution(object):
             i += 1
 
         return result
+
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    """
+    Better solution with Level-order traversal
+    """
+    def rightSideView(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        result = []
+
+        curr = [root]
+        while any(curr):
+            result.append(curr[-1].val)
+            next = []
+            for n in curr:
+                if n.left: next.append(n.left)
+                if n.right: next.append(n.right)
+            curr = next
+        return result
+
