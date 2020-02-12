@@ -7,15 +7,9 @@ class Solution(object):
         :type strs: List[str]
         :rtype: List[List[str]]
         """
-        anagrams = {}
+        d = defaultdict(list)
 
-        for str in strs:
-            key = ''.join(sorted(str))
+        for s in strs:
+            d[''.join(sorted(s))].append(s)
 
-            if key not in anagrams:
-                anagrams[key] = [str]
-            else:
-                anagrams[key].append(str)
-
-        return [i for i in anagrams.values()]
-
+        return list(d.values())

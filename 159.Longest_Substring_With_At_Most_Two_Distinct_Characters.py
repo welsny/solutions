@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 class Solution(object):
-    def lengthOfLongestSubstringTwoDistinct(self, s):
+    def lengthOfLongestSubstringTwoDistinct_from_20161230(self, s):
         """
         :type s: str
         :rtype: int
@@ -39,3 +40,16 @@ class Solution(object):
 
         return result
 
+    def lengthOfLongestSubstringTwoDistinct(self, s):
+        res = i = 0
+        d = {}
+
+        for j, char in enumerate(s):
+            d[char] = j
+            if len(d) > 2:
+                k, last_seen = min(d.items(), key=lambda item: item[1])
+                del d[k]
+                i = last_seen + 1
+            res = max(res, j-i+1)
+
+        return res
