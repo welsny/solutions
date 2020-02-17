@@ -5,11 +5,11 @@
 #         self.left = None
 #         self.right = None
 
+from collections import deque
+
 class Solution:
     def smallestFromLeaf(self, root: TreeNode) -> str:
         res = None
-
-        from collections import deque
         dq = deque([(root, '')])
 
         while dq:
@@ -20,9 +20,8 @@ class Solution:
                 if not res:
                     res = s
                 res = min(res, s)
-            if n.left:
-                dq.append((n.left, s))
-            if n.right:
-                dq.append((n.right, s))
+
+            for child in filter(bool, [n.left, n.right]):
+                append((child, s))
 
         return res
