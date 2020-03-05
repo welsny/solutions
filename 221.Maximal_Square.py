@@ -28,3 +28,22 @@ class Solution:
                         res = max(res, k)
 
         return res**2
+
+class Solution:
+    def maximalSquare(self, matrix: List[List[str]]) -> int:
+        """
+        Second solution, more concise!
+        """
+        res = 0
+        for i, row in enumerate(matrix):
+            for j, n in enumerate(row):
+                matrix[i][j] = n = int(n)
+                if i and j and n:
+                    matrix[i][j] = min(
+                        matrix[i-1][j],
+                        matrix[i][j-1],
+                        matrix[i-1][j-1]
+                    ) + 1
+                res = max(res, matrix[i][j])
+
+        return res**2
