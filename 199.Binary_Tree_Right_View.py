@@ -67,3 +67,29 @@ class Solution(object):
             curr = next
         return result
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+from collections import deque
+
+class Solution:
+    """
+    Use BFS which is slightly more space efficient:
+    """
+    def rightSideView(self, root: TreeNode) -> List[int]:
+        res = []
+        dq = deque([(0, root)])
+        while root and dq:
+            d, n = dq.popleft()
+            if len(res) <= d:
+                res.append(n.val)
+
+            res[d] = n.val
+            for c in filter(None, [n.left, n.right]):
+                dq.append((d+1, c))
+
+        return res
