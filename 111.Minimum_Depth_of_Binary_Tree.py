@@ -8,8 +8,6 @@
 #         self.left = None
 #         self.right = None
 
-import numpy as np
-
 class Solution:
     def minDepth(self, root):
         """
@@ -35,3 +33,22 @@ class Solution:
 
             nodes, depth = next, depth+1
 
+# # # # #
+
+from collections import deque
+
+class Solution:
+    def minDepth(self, root: TreeNode) -> int:
+        if not root:
+            return 0
+
+        dq = deque([(root, 1)])
+        while dq:
+            n, d = dq.popleft()
+
+            if not n.left and not n.right:
+                return d
+            if n.left:
+                dq.append((n.left, d+1))
+            if n.right:
+                dq.append((n.right, d+1))

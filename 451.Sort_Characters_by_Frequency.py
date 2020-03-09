@@ -21,3 +21,11 @@ class Solution(object):
                 result += ct*char
         return result
 
+# # # # #
+
+from collections import Counter
+
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        cts = Counter(s)
+        return ''.join([ct*c for c, ct in sorted(cts.items(), key=lambda x: -x[1])])

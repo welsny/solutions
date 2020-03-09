@@ -33,3 +33,26 @@ class Solution(object):
             curr = curr.prev
 
         return True
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def isPalindrome(self, head: ListNode) -> bool:
+        if not head:
+            return True
+
+        head.prev = None
+        curr = head
+        while curr and curr.next:
+            curr.next.prev = curr
+            curr = curr.next
+
+        while head and curr:
+            if head.val != curr.val:
+                return False
+            head, curr = head.next, curr.prev
+        return True

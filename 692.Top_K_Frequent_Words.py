@@ -4,7 +4,11 @@
 import heapq
 from collections import Counter, defaultdict
 
+
 class Solution(object):
+    """
+    First solution from 2018-07-25:
+    """
     def topKFrequent(self, words, k):
         """
         :type words: List[str]
@@ -22,3 +26,16 @@ class Solution(object):
             result += heapq.nsmallest(k - len(result), reverse_cts[ct])
         return result
 
+# # # # #
+
+from collections import Counter
+from heapq import nsmallest
+
+
+class Solution:
+    """
+    Second solution which is better, but is slightly slower:
+    """
+    def topKFrequent(self, words: List[str], k: int) -> List[str]:
+        ct = Counter(words)
+        return nsmallest(k, ct, key=lambda x: (-ct[x], x))
