@@ -29,3 +29,27 @@ class Solution:
 
         return curr
 
+class Solution:
+    """
+    Better solution using list comprehension:
+    """
+    def letterCombinations(self, digits: str) -> List[str]:
+        curr = ['']
+
+        phone = {
+            2: 'abc',
+            3: 'def',
+            4: 'ghi',
+            5: 'jkl',
+            6: 'mno',
+            7: 'pqrs',
+            8: 'tuv',
+            9: 'wxyz',
+        }
+        for d in digits:
+            curr = [
+                s+c for s in curr
+                for c in phone[int(d)]
+            ]
+
+        return curr if digits else []
