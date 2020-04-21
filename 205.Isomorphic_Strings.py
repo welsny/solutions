@@ -27,13 +27,3 @@ class Solution:
 
         return list(ct_s.values()) == list(ct_t.values())
 
-class Solution:
-    def isIsomorphic(self, s: str, t: str) -> bool:
-        d = {}
-        for c, c2 in zip(s, t):
-            if c not in d:
-                d[c] = c2
-            elif d[c] != c2:
-                return False
-
-        return len(d.values()) == len(set(d.values()))
